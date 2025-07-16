@@ -7,7 +7,12 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const app = express();
-app.use(cors({ origin: 'https://rerosewithme.vercel.app' }));
+// Allow CORS from the frontend origin
+app.use(cors({
+  origin: 'https://rerosewithme.vercel.app',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true
+}));
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
